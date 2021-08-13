@@ -31,7 +31,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('save', 'UserController@save')->name('user.save');
         Route::post('uploadImage', 'UserController@uploadImage')->name('user.image');
 
-
         Route::group(['middleware' => 'checkAuth:admin|teacher'], function () {
             Route::get('manage', 'UserController@managePage')->name('user.manage');
             Route::get('list', 'UserController@list')->name('user.list');
