@@ -1,0 +1,13 @@
+#login-form{
+    padding-top: 100px;
+    font-family: 'Microsoft JhengHei' !important;
+}
+.ui.main{
+    width: 500px !important;
+}
+.message .header{
+    margin-bottom: 10px !important;
+}
+.text-center{
+    text-align: center
+}

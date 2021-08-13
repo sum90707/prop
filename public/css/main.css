@@ -1,0 +1,21 @@
+body {
+    /* background-color: #2196f352 !important; */
+    /* padding: 15px 15px 0 15px !important; */
+}
+
+.ui.main.container {
+    width: 100%;
+}
+
+.ui.error.message {
+    padding: 15px;
+}
+
+.ui-alert-content-bottom-right{
+	bottom: 15px;
+	right: 15px;
+}
+
+.profile.ui.card {
+    width: 100%;
+}

@@ -1,0 +1,135 @@
+body > .ui.container {
+    margin-top: 6em;
+}
+/* Nav */
+.ui.fixed.borderless.menu {
+    background-color: black;
+}
+
+.ui .computer.only .item {
+    color: #fff;
+}
+
+.ui .computer.only .item:hover {
+    background: #505050 !important;
+    color: #fff !important;
+    border-bottom: 1px solid #fff;
+}
+
+.ui .computer .item.active {
+    background: #717171cf;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+.ui.dropdown.item .menu {
+    background-color: black !important;
+}
+
+.ui.menu .ui.dropdown .menu > .item {
+    color: #fff !important;
+}
+.ui.menu .ui.dropdown .menu > .item.active {
+    background-color: #717171cf !important;
+    color: #fff !important;
+    border-bottom: 1px solid #fff;
+}
+
+.ui.fixed.borderless.menu .row > a.header.item {
+    font-size: 1.2em;
+}
+
+/* Mobile */
+.tablet.mobile.only .header, .ui.icon.button > .icon {
+    color: #fff;
+}
+
+.tablet.mobile.only .header:hover {
+    background-color: #505050 !important;
+    color: #fff !important;
+    border-bottom: 1px solid #fff;
+}
+
+.ui.basic.button:hover {
+    background: #505050 !important;
+    color: #fff !important;
+    border-bottom: 1px solid #fff;
+}
+
+.ui.vertical.menu {
+    display: none;
+    border: none;
+    box-shadow: none;
+    background-color: #888888;
+}
+.ui.vertical.menu > .item {
+    padding-left: 1.428em;
+    color: #fff;
+}
+
+.ui.vertical.menu > .item.active {
+    padding-left: 1.428em;
+    background-color: #717171cf !important;
+    color: #fff !important;
+    border-bottom: 1px solid #fff;
+}
+
+.ui.vertical.menu > .item:hover {
+    padding-left: 1.428em;
+    background-color: #505050 !important;
+    color: #fff !important;
+    border-bottom: 1px solid #fff;
+}
+.ui.vertical.menu .item .title {
+    color: #fff;
+}
+.ui.vertical.menu .item .title .dropdown.icon {
+    float: none;
+    color: #fff;
+}
+
+.ui.vertical.menu .item .content .item {
+    padding: 0.5em 1em;
+    color: #fff;
+}
+
+.ui.vertical.menu .item .content .item:hover {
+    padding: 0.5em 1em;
+    background-color: #505050 !important;
+    color: #fff !important;
+    border-bottom: 1px solid #fff;
+}
+
+.ui.vertical.menu .item .content .item.active {
+    padding: 0.5em 1em;
+    background-color: #717171cf !important;
+    color: #fff !important;
+    border-bottom: 1px solid #fff;
+}
+
+.ui.vertical.menu .header.item
+.mobile .title {
+    text-transform: uppercase;
+    color: #fff;
+}
+/* Nav */
+
+.ui.message {
+    background-color: rga(238, 238, 238);
+    box-shadow: none;
+    /* padding: 5em 4em; */
+}
+.ui.message h1.ui.header {
+    font-size: 4.5em;
+    color: #888888;
+}
+.ui.message p.lead {
+    font-size: 1.3em;
+    color: #333333;
+    line-height: 1.4;
+    font-weight: 300;
+}
+
+.item a {
+    margin-left: 5px;
+}
