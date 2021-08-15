@@ -16,19 +16,14 @@ $(function() {
 		$.ajax({
 			url: route,
 			type: method ? method : 'get',
-			success: function(json) {
-				if(json.status == 200){
-					$button.removeClass('loading');
-					eval(callback)($button, json);
-				}else{
-					ajaxErrors(json);
-				}
-				
+			success: function(json, textStatus, xhr) {
+				$button.removeClass('loading');
+				eval(callback)($button, json);
 			}
 		})
-		.fail(function(e) {
+		.fail(function(xhr) {
 			$button.removeClass('loading');
-			ajaxErrors(e);
+			ajaxErrors(xhr);
 		});
 	});
 
@@ -44,10 +39,10 @@ function activePath(path, parameters) {
 	return path;
 }
 
-function ajaxErrors(e) {
+function ajaxErrors(xhr) {
 	$.uiAlert({
-		textHead: "Error " + e.status, // header
-		text: e.message ? e.message : '', // Text
+		textHead: "Error " + xhr.status, // header
+		text: xhr.responseJSON.message ? xhr.responseJSON.message : '', // Text
 		bgcolor: '#DB2828', // background-color
 		textcolor: '#fff', // color
 		position: 'bottom-right',// position . top And bottom ||  left / center / right
@@ -66,4 +61,16 @@ function ajaxSussMsg(json){
 		icon: 'checkmark box', // icon in semantic-UI
 		time: 5, // time	
 	});	
+}
+
+function errorAlert(json) {
+	$.uiAlert({
+		textHead: "Error " + json.status, // header
+		text: json.message ? json.message : '', // Text
+		bgcolor: '#DB2828', // background-color
+		textcolor: '#fff', // color
+		position: 'bottom-right',// position . top And bottom ||  left / center / right
+		icon: 'remove circle', // icon in semantic-UI
+		time: 5, // time	
+	});
 }

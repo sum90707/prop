@@ -44,26 +44,38 @@ class UserController extends Controller
 
     public function uploadImage(Request $request)
     {
+        
+        $status = 422;
+        $img = '';
+        $msg = 'upload fail';
+        $allowedMimeTypes = ['image/jpeg','image/gif','image/png','image/bmp','image/svg+xml'];
+        
         $user = Auth::User();
         $file = $request->file()[0];
+        $contentType = mime_content_type($file->getRealPath());
 
-        $fileName = md5(time() . rand(0,9999)) .'.'. $request[0]->getClientOriginalExtension();
-        $request[0]->move(public_path('upload/' . $user->id), $fileName);
-        $source = file_get_contents(public_path('upload/' . $user->id . "/" . $fileName));
-        $user->mug_shot = $fileName;
+        if(in_array($contentType, $allowedMimeTypes)) {
+            
+            $fileName = md5(time() . rand(0,9999)) .'.'. $request[0]->getClientOriginalExtension();
+            $request[0]->move(public_path('upload/' . $user->id), $fileName);
+            $source = file_get_contents(public_path('upload/' . $user->id . "/" . $fileName));
+            $user->mug_shot = $fileName;
 
-        if($user->save()){
-            return new JsonResponse([
-                'status' => 200,
-                'image' => "$user->id/$user->mug_shot"
-                
-            ]);
+            if($user->save()){
+                $status = 200;
+                $img = "$user->id/$user->mug_shot";
+                $msg = 'upload suss';
+            }
+
+        }else{
+            $msg = "Only upload image";
         }
         
+        
         return new JsonResponse([
-            'status' => 422,
-            'message' => 'upload fail'
-        ]);
+            'message' => $msg,
+            'image' => $img
+        ], $status);
     }
 
     
@@ -88,10 +100,9 @@ class UserController extends Controller
         }
 
         return new JsonResponse([
-            'status' => $status,
             'message' => $msg,
             'btn' => $user->status
-        ]);
+        ], $status);
     }
 
     public function toggleAuth(Request $request, User $user)
@@ -113,9 +124,8 @@ class UserController extends Controller
         }
 
         return new JsonResponse([
-            'status' => $status,
             'message' => $msg
-        ]);
+        ], $status);
     }
 
     public function toggleLang(Request $request, User $user)
@@ -137,9 +147,8 @@ class UserController extends Controller
         }
 
         return new JsonResponse([
-            'status' => $status,
             'message' => $msg
-        ]);
+        ], $status);
     }
     
 }

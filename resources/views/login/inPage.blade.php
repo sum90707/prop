@@ -115,27 +115,27 @@ $(function() {
 				if (loadBtn != null) {
 					$(loadBtn).removeClass("loading");
 				}
-
-				if (json.status == 200) {	
-
-					$("#welcome").modal('show');
-					setTimeout(function() {
-						document.location.href = json.url;
-					}, 1000);	
-
-				} else {
-					$("#login-form .error.message .list").html("");
-                    $("#login-form .error.message").show();
-                    $("#login-form .error.message .list").append("<li>" + json.message + "</li>");				
-				}
+                if(json.url) {
+                    $("#welcome").modal('show');
+                    setTimeout(function() {
+                        document.location.href = json.url;
+                    }, 1000);
+                }
 			}
 		})
-		
 		.fail(function(e) {
 			if (loadBtn != null) {
 				$(loadBtn).removeClass("loading");
 			}
-			ajaxErrors(e);
+
+            if(e.responseJSON.message) {
+                $("#login-form .error.message .list").html("");
+                $("#login-form .error.message").show();
+                $("#login-form .error.message .list").append("<li>" + e.responseJSON.message + "</li>");
+            }else{
+                ajaxErrors(e);
+            }
+			
 		});
 		return false;
 	});		

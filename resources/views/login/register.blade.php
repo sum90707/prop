@@ -99,28 +99,28 @@ $(function() {
                 if (loadBtn != null) {
                     $(loadBtn).removeClass("loading");
                 }
-                if (json.status != 200) {	
-					$("#register-form .error.message .list").html("");
-					if (json.message.length > 0) {
-						var errors = JSON.parse(json.message);
-                        console.log(errors);
-						$("#register-form .error.message").show();
-						for (var key in errors) {
-							$("#register-form .error.message .list").append("<li>" + errors[key][0] + "</li>");
-						}
-					}					
-				}else{
+
+                if(json.url) {
                     document.location.href = json.url;
                 }
-
 			}
 		})
-		
 		.fail(function(e) {
 			if (loadBtn != null) {
 				$(loadBtn).removeClass("loading");
 			}
-			ajaxErrors(e);
+
+            if (e.responseJSON.message) {
+                if (e.responseJSON.message.length > 0) {
+                    var errors = JSON.parse(e.responseJSON.message);
+                    $("#register-form .error.message").show();
+                    for (var key in errors) {
+                        $("#register-form .error.message .list").append("<li>" + errors[key][0] + "</li>");
+                    }
+                }	
+            }else{
+                ajaxErrors(e);
+            }
 		});
 		return false;
 	});

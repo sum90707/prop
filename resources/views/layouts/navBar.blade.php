@@ -92,6 +92,41 @@
             <a class="item">@lang('glob.about')</a>
             <div class="ui divider"></div>
 
+            @guest
+                <div class="item">
+                    <a href="{{ route('login.page') }}" >@lang('glob.login')</a>
+                </div>
+                <div class="item">
+                    <a class="mini ui blue button" href="{{ route('register.page') }}" >@lang('glob.signup')</a>
+                </div>
+            @else
+                <div class="item">
+                    <div class="title">
+                        {{ Auth::user()->name }}
+                        <i class="dropdown icon"></i>
+                    </div>
+                    <div class="content">
+                        <a href="{{ route('user.profile') }}">
+                            <div class="item">
+                                <i class="user circle icon"></i>
+                                @lang('user.profile')
+                            </div>
+                        </a>
+                        @can('access', 'admin')
+                            <a href="{{ route('user.manage') }}">
+                                <div class="item">
+                                    <i class="cogs icon"></i>
+                                    @lang('user.manage')
+                                </div>
+                            </a> 
+                        @endcan
+                    </div>
+                </div>
+                <div class="item">
+                    <a class="mini ui blue button" href="{{ route('logout') }}" >@lang('glob.logout')</a>
+                </div>
+            @endguest
+
             <div class="item">
                 <div class="title">
                    @lang('glob.langSelect')

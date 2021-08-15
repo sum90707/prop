@@ -131,6 +131,7 @@
                 >`,
             language: {!! json_encode(__('datatable.package')) !!},
             drawCallback: function(settings, json) {
+
                 $('#loading').removeClass('active');
                 $('.user-info-selector').change(function (){
                     let $select = $(this);
@@ -138,22 +139,18 @@
                         route = $select.data('route'),
                         method = $select.data('method');
 
-                        $.ajax({
-                            url: `${route}?select=${whichSelect}`,
-                            type: method ? method : 'get',
-                            success: function(json) {
-                                if(json.status == 200){
-                                    ajaxSussMsg(json);
-                                }else{
-                                    ajaxErrors(json);
-                                }
-                                
-                            }
-                        })
-                        .fail(function(e) {
-                            ajaxErrors(e);
-                        });
-                })
+                    $.ajax({
+                        url: `${route}?select=${whichSelect}`,
+                        type: method ? method : 'get',
+                        success: function(json, textStatus, xhr) {
+                            ajaxSussMsg(json);
+                        }
+                    })
+                    .fail(function(xhr) {
+                        ajaxErrors(xhr);
+                    });
+                });
+
             }
         });
 

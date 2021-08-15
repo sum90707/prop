@@ -134,7 +134,7 @@ $(function() {
     $('#img-input').on('change', function(event, label) {
         if ($(this).val()) {
             if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
-                ajaxErrors({
+                errorAlert({
                     'status': 422,
                     'message': "Only formats are allowed : "+fileExtension.join(', ')
                 });
@@ -171,29 +171,18 @@ $(function() {
             }, 			
             processData: false,
             contentType: false,			
-            success: function(json) {
-                
-                if(json.status == 200){
+            success: function(json, textStatus, xhr) {
+                if(json.image) {
                     $("#mug-shot").attr("src", `${publicPath}/${json.image}`);
-                }else{
-                    ajaxErrors(json)
+                    ajaxSussMsg(json);
                 }
-            },
-            error: function(e) {
-                ajaxErrors(e)
             }
+        })
+        .fail(function(xhr) {
+            ajaxErrors(xhr);
         });
-        
-
-
-
-
        
     }
-
-
-   
-
 
 })
 

@@ -68,10 +68,9 @@ class LoginController extends Controller
         }
 
         return new JsonResponse([
-            'status' => $status,
             'message' => $msg,
             'url' => $url
-        ]);
+        ], $status);
     }
 
     public function register(Request $request)
@@ -97,17 +96,15 @@ class LoginController extends Controller
 
             if($model->save()){
                 $status = 200;
-                $msg = '';
             }
         }else{
             $msg = $validator->messages()->toJson();
         }
 
         return new JsonResponse([
-            'status' => $status,
             'message' => $msg,
             'url' => $url
-        ]);
+        ], $status);
     }
 
     private function userLogin($userID)
