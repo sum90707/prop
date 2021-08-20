@@ -15,5 +15,6 @@ return [
     'disabled' => 'Disabled',
     'enabled' => 'Enabled',
     'set_enable' => 'Set enable',
-    'set_disable' => 'Set Disable'
+    'set_disable' => 'Set Disable',
+    'join_at' => 'Join us'
 ];

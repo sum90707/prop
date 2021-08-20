@@ -13,5 +13,7 @@ return [
     'last_login' => 'Last Login',
     'language' => 'Language',
     'manage' => 'User Manage',
-    'status' => 'Account Status'
+    'status' => 'Account Status',
+    'introduce' => 'Introduce',
+    'change_password' => 'Change password'
 ];

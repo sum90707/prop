@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tw">
+<html lang="{{ app()->getLocale() }}">
 <html>
   <head>
       <!-- Standard Meta -->
@@ -21,8 +21,13 @@
       <link rel="stylesheet" href="//cdn.datatables.net/1.10.21/css/dataTables.semanticui.min.css">
   </head>
   <body>
-        @extends('layouts.navBar')
-        @yield('content')
-        
+      @extends('layouts.navBar')
+      @yield('content')
+
+      <div class="ui  vertical footer segment prop-footer">
+        <div class="ui center aligned container">
+          Copyright © 2018 Powered by HL. All rights reserved.
+        </div>
+      </div>
   </body>
 </html>

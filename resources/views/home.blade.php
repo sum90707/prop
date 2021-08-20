@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="ui main container">
+  
   <div class="ui vertical stripe segment" id="main-content">
     <div class="banner-group" >
       <div class="row" id="img-group">
@@ -11,94 +12,41 @@
       <div class="change-banner" id="right"><input type="button" value="❯"> </div>
       <div class="change-banner" id="left"><input type="button" value="❮"> </div>
     </div>
-  </div>   
+  </div>
+
+
+  <div class="ui two column centered grid" style="margin: auto">
+    <div class="ours-teacher ui link cards four wide row" >
+      
+      @foreach ($teachers as $teacher)
+        <div class="card teacher-card">
+
+          <div class="image">
+            <img src="{{ asset('upload/') }}/{{ $teacher->mug_shot ? $teacher->id .'/'. $teacher->mug_shot : 'teacher.png' }}">
+          </div>
+
+          <div class="content">
+            <div class="header">{{ $teacher->name }}</div>
+            <div class="description">{{ $teacher->introduce }}</div>
+          </div>
+          <div class="extra content">
+            <span class="right floated">
+              {{ date( "Y/m/d", strtotime($teacher->created_at)) }} 
+              @lang('glob.join_at')
+            </span>
+          </div>
+          
+        </div>
+      @endforeach
+      
+    </div>
+  <div>
+    
+
 </div>
 
 
-<style>
-  #main-content {
-    /* background-color : black; */
-    width: 100%;
-    height:  400px;
-    padding: 0;
-  }
-
-  #img-group {
-    height:  400px;  
-    width:   100%;  
-    padding: 0;
-    margin:  0;  
-  }
-
-  #img-group img {
-    border:  1px solid #ccc;  
-    background-color: #eee;  
-    width:  100%; 
-    height: 400px; 
-    top:  0; 
-    left: 0;
-    border-radius: 10px;
-  }
-
-  #left {
-    left: 0;
-    animation: 1.0s leftMove;
-    font-size: 50px;
-    top: 200px;
-    z-index: 99;
-    animation-iteration-count:infinite;
-    transition-timing-function: cubic-bezier(.44,.13,.36,.19);
-    color: #777474bf;
-    position: absolute;
-  }
-
-  #right {
-    right: 0;
-    animation: 1.0s rightMove;
-    font-size: 50px;
-    top: 200px;
-    z-index: 99;
-    animation-iteration-count:infinite;
-    transition-timing-function: cubic-bezier(.44,.13,.36,.19);
-    color: #777474bf;
-    position: absolute;
-  }
-
-  .change-banner input {
-    background-color: Transparent;
-    background-repeat:no-repeat;
-    border: none;
-    cursor:pointer;
-    overflow: hidden;
-    outline:none;
-  }
-
-  @keyframes leftMove {
-      0% {
-          transform: translate3d(0px, 0px, 0px);
-      }
-      50% {
-          transform: translate3d(10px, 0px, 0px);
-      }
-      100% {
-          transform: translate3d(0px, 0px, 0px);
-      }
-  }
-
-  @keyframes rightMove {
-      0% {
-          transform: translate3d(0px, 0px, 0px);
-      }
-      50% {
-          transform: translate3d(-10px, 0px, 0px);
-      }
-      100% {
-          transform: translate3d(0px, 0px, 0px);
-      }
-}   
-
-  
-</style>
+<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/home.css') }}">
 <script type="text/javascript" src="{{ URL::asset('js/jquery.cycle.all.js') }}"></script>
 <script>
   $(function() {

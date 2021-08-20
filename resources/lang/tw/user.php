@@ -13,5 +13,7 @@ return [
     'last_login' => '最後登入',
     'language' => '語系',
     'manage' => '管理使用者',
-    'status' => '帳號狀態'
+    'status' => '帳號狀態',
+    'introduce' => '教師介紹',
+    'change_password' => '更換密碼'
 ];

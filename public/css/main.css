@@ -19,3 +19,6 @@ body {
 .profile.ui.card {
     width: 100%;
 }
+.layouts.pushable {
+    padding-top: 70px !important;
+}

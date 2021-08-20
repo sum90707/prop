@@ -31,11 +31,6 @@ class LoginController extends Controller
         return Auth::guard('auth');
     }
 
-    public function index(Request $request)
-    {
-        return view('home');
-    }
-
     public function loginPage()
     {
         return view('login/inPage');

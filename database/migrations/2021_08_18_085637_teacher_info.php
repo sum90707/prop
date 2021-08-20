@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Test extends Migration
+class TeacherInfo extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class Test extends Migration
      */
     public function up()
     {
-        DB::statement('ALTER TABLE `prop_users` CHANGE `updated_at` `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP;');
-        //$table->timestamp('created_at')->useCurrent();
+        Schema::table('prop_users', function ($table) {
+            $table->string('introduce')->comment("介紹")->after('language')->nullable();
+        });
     }
 
     /**
@@ -24,8 +25,8 @@ class Test extends Migration
      */
     public function down()
     {
-        Schema::table('prop_users', function ($table) {
-            
+        Schema::table('prop_users', function($table) {
+            $table->dropColumn('introduce');
         });
     }
 }

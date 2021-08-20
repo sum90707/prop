@@ -8,50 +8,47 @@
     .dashboard {
         padding: 15px;
     }
-    .js-table select {
-        
-    }
 </style>
+<div class="layouts pushable">
+    <div class="ui main container dashboard">
 
-<div class="ui main container dashboard">
+        <h1 class="ui header">
+            @lang('user.manage')
+        </h1>
 
-    <h1 class="ui header">
-        @lang('user.manage')
-    </h1>
-
-    <div class="dimmable">
-        <div class="ui active inverted dimmer" id="loading">
-            <div class="ui text loader huge">
-                @lang('glob.loading') 
+        <div class="dimmable">
+            <div class="ui active inverted dimmer" id="loading">
+                <div class="ui text loader huge">
+                    @lang('glob.loading') 
+                </div>
             </div>
+
+            <table class="ui celled striped table js-table user-manage" width="100%" style="text-align: center">        
+                <thead>
+                    <tr>
+                        <th class="button">@lang('user.status') </th>
+                        <th>
+                            @lang('user.name')
+                        </th>
+                        <th>
+                            @lang('user.email') 
+                        </th>
+                        <th>
+                            @lang('user.auth') 
+                        </th>
+                        <th>
+                            @lang('user.language') 
+                        </th>
+                        <th>
+                            @lang('user.last_login') 
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+
         </div>
-
-        <table class="ui celled striped table js-table user-manage" width="100%" style="text-align: center">        
-            <thead>
-                <tr>
-                    <th class="button">@lang('user.status') </th>
-                    <th>
-                        @lang('user.name')
-                    </th>
-                    <th>
-                        @lang('user.email') 
-                    </th>
-                    <th>
-                        @lang('user.auth') 
-                    </th>
-                    <th>
-                        @lang('user.language') 
-                    </th>
-                    <th>
-                        @lang('user.last_login') 
-                    </th>
-                </tr>
-            </thead>
-        </table>
-
     </div>
 </div>
-
 
 
 <script>

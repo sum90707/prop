@@ -16,5 +16,6 @@ return [
     'disabled' => '已停用',
     'enabled' => '已啟用',
     'set_enable' => '設為啟用',
-    'set_disable' => '設為停用'
+    'set_disable' => '設為停用',
+    'join_at' => '加入'
 ];

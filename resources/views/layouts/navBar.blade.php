@@ -7,7 +7,7 @@
         <!--Start: Desktop Nav-->
         <div class="computer only row">
             <a class="header item" href="{{ route('home') }}">@lang('glob.slogan')</a>
-            <a class="active item">@lang('glob.home')</a>
+            <a class="item" href="{{ route('home') }}" >@lang('glob.home')</a>
             <a class="item">@lang('glob.about')</a>
             
             <div class="right menu">
@@ -27,6 +27,12 @@
                                 <div class="item">
                                     <i class="user circle icon"></i>
                                     @lang('user.profile')
+                                </div>
+                            </a>
+                            <a href="{{ route('user.change.password') }}">
+                                <div class="item">
+                                    <i class="lock icon"></i>
+                                    @lang('user.change_password')
                                 </div>
                             </a>
                             @can('access', 'admin')
@@ -110,6 +116,12 @@
                             <div class="item">
                                 <i class="user circle icon"></i>
                                 @lang('user.profile')
+                            </div>
+                        </a>
+                        <a href="{{ route('user.change.password') }}">
+                            <div class="item">
+                                <i class="lock icon"></i>
+                                @lang('user.change_password')
                             </div>
                         </a>
                         @can('access', 'admin')

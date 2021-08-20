@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'LoginController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('local/{lang}', 'LanguageController@switchLang')->name('lang.switch');
 
 
@@ -38,8 +38,9 @@ Route::group(['middleware' => 'auth'], function () {
             Route::put('toggle/auth/{user}', 'UserController@toggleAuth')->name('user.toggle.auth');
             Route::put('toggle/lang/{user}', 'UserController@toggleLang')->name('user.toggle.lang');
         });
+
+        Route::get('changPassword', 'UserController@changePwd')->name('user.change.password');
+        Route::post('changeSave', 'UserController@changeSave')->name('user.save.password');
         
     });
-
-    
 });

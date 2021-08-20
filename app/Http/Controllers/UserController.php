@@ -3,14 +3,25 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Hash;
+use Lang;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+
+    protected function changeValidator(array $data)
+    {
+        return Validator::make($data, [
+            'password' => 'required|string|min:6|confirmed'
+        ]);
+    }
+
     public function profile(Request $request)
     {
         $userData = Auth::User();
@@ -20,6 +31,11 @@ class UserController extends Controller
     public function managePage(Request $request)
     {
         return view('user.manage');
+    }
+
+    public function changePwd(Request $request)
+    {
+        return view('user.changePassword');
     }
 
     public function save(Request $request)
@@ -34,6 +50,10 @@ class UserController extends Controller
         if(array_key_exists($userData['language'], config('languages'))) {
             $user->language = $userData['language'];
             Session::put('applocale', $userData['language']);
+        }
+
+        if($userData['introduce'] && Auth::User()->can('access', "admin|teacher")) {
+            $user->introduce = $userData['introduce'];
         }
         $user->save();
         
@@ -96,7 +116,7 @@ class UserController extends Controller
                 $status = 200;
             }
         }else{
-            $msg = 'permission deniedn';
+            $msg = 'permission denied';
         }
 
         return new JsonResponse([
@@ -120,7 +140,7 @@ class UserController extends Controller
                 }
             }
         }else{
-            $msg = 'permission deniedn';
+            $msg = 'permission denied';
         }
 
         return new JsonResponse([
@@ -143,12 +163,56 @@ class UserController extends Controller
                 }
             }
         }else{
-            $msg = 'permission deniedn';
+            $msg = 'permission denied';
         }
 
         return new JsonResponse([
             'message' => $msg
         ], $status);
+    }
+
+    public function changeSave(Request $request)
+    {
+        $data = $request->post()['User'];
+        $user = Auth::User();
+
+        $status = 422;
+        $msg = 'password update';
+        $valid = false;
+
+        
+        $validator = self::changeValidator($data);
+        if( $validator->passes() ){
+            if($user->can('access', 'admin') ||
+                $data['email'] == $user->email){
+                self::changePassword($data, $status, $msg);
+            }else{
+                $msg = 'permission denied';
+            }
+        }else{
+            $valid = true;
+            $msg = $validator->messages()->toJson();
+        }
+
+        return new JsonResponse([
+            'message' => $msg,
+            'validator' => $valid
+        ], $status);
+
+    }
+
+    private function changePassword($data, &$status, &$msg)
+    {
+        $whichChange = User::where('email', '=', $data['email'])->first();
+        if($whichChange){
+            $whichChange->password = Hash::make($data['password']);
+            if( $whichChange->save() ){
+                $status = 200;
+            }
+        }else{
+            $msg = 'email not found';
+        }
+
     }
     
 }
