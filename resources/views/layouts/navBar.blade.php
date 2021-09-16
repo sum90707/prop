@@ -8,7 +8,29 @@
         <div class="computer only row">
             <a class="header item" href="{{ route('home') }}">@lang('glob.slogan')</a>
             <a class="item" href="{{ route('home') }}" >@lang('glob.home')</a>
-            <a class="item">@lang('glob.about')</a>
+            @guest
+            @else
+                <div class="ui dropdown item">
+                    @lang('glob.menu')
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        @can('access', 'admin|teacher')
+                            <a href="{{ route('quesition.create.page') }}">
+                                <div class="item">
+                                    <i class="file alternate icon"></i>
+                                    @lang('glob.make_out_questions')
+                                </div>
+                            </a>
+                            <a href="{{ route('quesition.list') }}">
+                                <div class="item">
+                                    <i class="file alternate icon"></i>
+                                    @lang('glob.quesition_list')
+                                </div>
+                            </a>
+                        @endcan
+                    </div>
+                </div>
+            @endguest
             
             <div class="right menu">
                 @guest
@@ -95,7 +117,25 @@
             </div>
             <!-- End: Search --> --}}
             <a class="active item">@lang('glob.home')</a>
-            <a class="item">@lang('glob.about')</a>
+            @guest
+            @else
+                <div class="item">
+                    <div class="title">
+                    @lang('glob.menu')
+                    <i class="dropdown icon"></i>
+                    </div>
+                    <div class="content">
+                        @can('access', 'admin|teacher')
+                            <a href="">
+                                <div class="item">
+                                    <i class="file alternate icon"></i>
+                                    @lang('glob.make_out_questions')
+                                </div>
+                            </a>
+                        @endcan
+                    </div>
+                </div>
+            @endguest
             <div class="ui divider"></div>
 
             @guest
@@ -158,7 +198,7 @@
                         </div>
                     </a>
                 </div>
-              </div>
+            </div>
 
         </div>
         <!--End: Mobile Nav-->

@@ -28,6 +28,10 @@ $(function() {
 	});
 
 
+	$('body').on('click', '.menu-item-btn', function() {
+		let route = $(this).data('route');
+		location.href=route;
+	});
 	
 })
 

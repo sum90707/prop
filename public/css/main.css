@@ -22,3 +22,7 @@ body {
 .layouts.pushable {
     padding-top: 70px !important;
 }
+
+.button-row {
+    padding-top: 2rem;
+}

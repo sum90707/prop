@@ -11,10 +11,15 @@ return [
     'welcome' => 'Welcome',
     'loginNow' => 'Login Now',
     'save' => 'Save',
+    'update' => 'Update',
     'loading' => 'Loading',
     'disabled' => 'Disabled',
     'enabled' => 'Enabled',
     'set_enable' => 'Set enable',
     'set_disable' => 'Set Disable',
-    'join_at' => 'Join us'
+    'join_at' => 'Join us',
+    'menu' => 'Menu',
+    'for_teacher' => 'For Teacher',
+    'make_out_questions' => 'Make out questions',
+    'quesition_list' => 'Quesition list'
 ];

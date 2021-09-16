@@ -12,10 +12,16 @@ return [
     'welcome' => '歡迎回來',
     'loginNow' => '登入中',
     'save' => '儲存',
+    'update' => '更新',
     'loading' => '載入中',
     'disabled' => '已停用',
     'enabled' => '已啟用',
     'set_enable' => '設為啟用',
     'set_disable' => '設為停用',
-    'join_at' => '加入'
+    'join_at' => '加入',
+    'menu' => '功能列表',
+    'for_teacher' => '老師專區',
+    'make_out_questions' => '出題系統',
+    'quesition_list' => '題目列表',
+    'status' => '狀態'
 ];

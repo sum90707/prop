@@ -31,6 +31,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('save', 'UserController@save')->name('user.save');
         Route::post('uploadImage', 'UserController@uploadImage')->name('user.image');
 
+        Route::get('changPassword', 'UserController@changePwd')->name('user.change.password');
+        Route::post('changeSave', 'UserController@changeSave')->name('user.save.password');
+
         Route::group(['middleware' => 'checkAuth:admin|teacher'], function () {
             Route::get('manage', 'UserController@managePage')->name('user.manage');
             Route::get('list', 'UserController@list')->name('user.list');
@@ -38,9 +41,16 @@ Route::group(['middleware' => 'auth'], function () {
             Route::put('toggle/auth/{user}', 'UserController@toggleAuth')->name('user.toggle.auth');
             Route::put('toggle/lang/{user}', 'UserController@toggleLang')->name('user.toggle.lang');
         });
-
-        Route::get('changPassword', 'UserController@changePwd')->name('user.change.password');
-        Route::post('changeSave', 'UserController@changeSave')->name('user.save.password');
         
     });
+
+    Route::prefix('quesition')->group(function() {
+        Route::get('create/{quesition?}', 'QuesitionController@createPage')->name('quesition.create.page');
+        Route::post('save', 'QuesitionController@save')->name('quesition.save');
+        Route::get('list', 'QuesitionController@list')->name('quesition.list');
+        Route::put('toggle/{quesition}', 'QuesitionController@toggle')->name('quesition.toggle');
+
+        Route::get('test', 'QuesitionController@testController')->name('quesition.test');
+    });
+
 });
