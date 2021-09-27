@@ -7,6 +7,11 @@
 <div class="layouts pushable">
     <div class="ui main container">
         <div class="ui one column grid center aligned">
+            <div class="four wide column center aligned">
+                <h2>
+                    @lang('quesition.title_view')
+                </h2>
+            </div>
             <div class="fourteen wide column">
 
                 <table class="ui compact celled definition table center aligned">
@@ -16,6 +21,7 @@
                             <th> @lang('quesition.id')</th>
                             <th> @lang('quesition.year')</th>
                             <th> @lang('quesition.semester')</th>
+                            <th> @lang('quesition.type')</th>
                             <th> @lang('quesition.quesition')</th>
                             <th> @lang('quesition.options') </th>
                             <th> @lang('quesition.answer')</th>
@@ -36,6 +42,7 @@
                             <td> {{ $quesition->id }} </td>
                             <td> {{ $quesition->year }} </td>
                             <td> {{ $quesition->semester }} </td>
+                            <td> {{ $quesition->type }} </td>
                             <td> {{ $quesition->quesition }} </td>
                             <td> 
                                 @if(is_array($quesition->options))
@@ -79,7 +86,8 @@
 $(function() {
     $statusCheckBox = $('.status-checkbox');
     $statusCheckBox.checkbox();
-
+    
+    $('.dropdown').dropdown();
     
     $.each($statusCheckBox,function(){
         setCheckBox($(this));
@@ -88,18 +96,7 @@ $(function() {
 
 })
 
-function  setCheckBox($checkbox, response=false) {
-    
-    if(response){
-        $checkbox.data('status', parseInt(response.btnStatus));
-    }
 
-    if($checkbox.data('status') === 1){
-        $checkbox.checkbox('set checked');
-    }else{
-        $checkbox.checkbox('set unchecked');
-    }
-}
 
 
 function toggle() {

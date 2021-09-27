@@ -26,3 +26,76 @@ body {
 .button-row {
     padding-top: 2rem;
 }
+
+
+#sidebar-form{
+	border-radius: 0px;
+	height: 100%;
+	margin: 0px !important;
+	width: 0px !important;
+	padding: 0px !important;
+	overflow: auto !important;
+	/*opacity: 0;*/
+	position: fixed;
+	right: 0px;
+	top: 0px;
+	z-index: 1800;
+	background-color: white;
+}
+
+
+#sidebar-form.push{
+    -webkit-transition: width .5s;
+    transition: width .5s;
+    will-change: width;
+	/*opacity: 1!important;*/
+	width: 600px !important;
+	padding-bottom: 160px !important;
+	padding-left: 20px !important;
+	padding-right: 20px !important;	
+}
+
+body .pusher.dimmed{
+	cursor: pointer;
+    -webkit-transition: opacity .5s;
+    transition: opacity .5s;
+    will-change: opacity;
+	opacity: 1!important;
+    width: 100%;
+    height: 100%;	
+}
+
+body .pusher.dimmed .close.link.icon{
+	color: #fff !important;
+    font-size: 24px !important;
+    position: fixed !important;
+    top: 30px !important;
+    left: 27px !important;
+}
+
+
+body .pusher{
+    position: fixed;
+    top: 0;
+    right: 0;
+    content: '';
+    background-color: rgba(0,0,0,.4);
+    overflow: hidden;
+    opacity: 0;
+    -webkit-transition: opacity .5s;
+    transition: opacity .5s;
+    will-change: opacity;    
+    z-index: 1000;
+    overflow-y: auto;
+    width: 0px;
+    height: 0px;	    
+}
+
+.required::before {
+	content: '*';
+	color: red;
+}
+
+.sidebar-button-group {
+    padding-top: 15px;
+}

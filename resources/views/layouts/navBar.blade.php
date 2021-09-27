@@ -21,10 +21,16 @@
                                     @lang('glob.make_out_questions')
                                 </div>
                             </a>
-                            <a href="{{ route('quesition.list') }}">
+                            <a href="{{ route('quesition.admin') }}">
                                 <div class="item">
                                     <i class="file alternate icon"></i>
                                     @lang('glob.quesition_list')
+                                </div>
+                            </a>
+                            <a href="{{ route('paper.admin') }}">
+                                <div class="item">
+                                    <i class="file alternate icon"></i>
+                                    @lang('glob.paper_list')
                                 </div>
                             </a>
                         @endcan
@@ -126,10 +132,22 @@
                     </div>
                     <div class="content">
                         @can('access', 'admin|teacher')
-                            <a href="">
+                            <a href="{{ route('quesition.create.page') }}">
                                 <div class="item">
                                     <i class="file alternate icon"></i>
                                     @lang('glob.make_out_questions')
+                                </div>
+                            </a>
+                            <a href="{{ route('quesition.admin') }}">
+                                <div class="item">
+                                    <i class="file alternate icon"></i>
+                                    @lang('glob.quesition_list')
+                                </div>
+                            </a>
+                            <a href="{{ route('paper.admin') }}">
+                                <div class="item">
+                                    <i class="file alternate icon"></i>
+                                    @lang('glob.paper_list')
                                 </div>
                             </a>
                         @endcan

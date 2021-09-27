@@ -54,10 +54,10 @@ class QuesitionController extends Controller
         return view('quesition.create', compact('quesition'));
     }
 
-    public function list(Request $request)
+    public function admin(Request $request)
     {
 
-        $quesitions = Quesition::pageData(3);
+        $quesitions = Quesition::pageData(15);
         
         return view('quesition.view', compact('quesitions'));
     }

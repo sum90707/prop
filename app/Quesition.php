@@ -63,6 +63,9 @@ class Quesition extends Model
     {
         $type = config('quesition.type');
         foreach($data as $item) {
+            if($item->type == 1 ) {
+                $item->answer = $item->answer == 0 ? 'X' : 'O';
+            }
             $item->options = $item->options ? json_decode($item->options, true) : '';
             $item->type = $type[$item->type];
         }

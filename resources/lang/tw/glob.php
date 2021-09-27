@@ -13,6 +13,7 @@ return [
     'loginNow' => '登入中',
     'save' => '儲存',
     'update' => '更新',
+    'discard' => '取消',
     'loading' => '載入中',
     'disabled' => '已停用',
     'enabled' => '已啟用',
@@ -23,5 +24,11 @@ return [
     'for_teacher' => '老師專區',
     'make_out_questions' => '出題系統',
     'quesition_list' => '題目列表',
-    'status' => '狀態'
+    'paper_list' => '試卷列表',
+    'status' => '狀態',
+    'name' => '名稱',
+    'create_by' => '建立人',
+    'operate' => '操作',
+    'basic_info' => '基本資料',
+    'remark' => '備註'
 ];

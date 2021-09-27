@@ -11,6 +11,7 @@ return [
     'welcome' => 'Welcome',
     'loginNow' => 'Login Now',
     'save' => 'Save',
+    'discard' => 'Discard',
     'update' => 'Update',
     'loading' => 'Loading',
     'disabled' => 'Disabled',
@@ -21,5 +22,12 @@ return [
     'menu' => 'Menu',
     'for_teacher' => 'For Teacher',
     'make_out_questions' => 'Make out questions',
-    'quesition_list' => 'Quesition list'
+    'quesition_list' => 'Quesition list',
+    'paper_list' => 'Paper List',
+    'status' => 'Status',
+    'name' => 'Name',
+    'create_by' => 'Create By',
+    'operate' => 'Operate',
+    'basic_info' => 'Basic_info',
+    'remark' => 'Remark'
 ];

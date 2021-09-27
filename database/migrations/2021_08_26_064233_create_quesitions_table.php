@@ -25,14 +25,7 @@ class CreateQuesitionsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('prop_examination_papers', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name', 100)->comment('試卷名稱');
-            $table->integer('create_by');
-            $table->boolean('status')->default(false);
-            $table->timestamps();
-            $table->unique('name');
-        });
+        
     }
 
     /**
@@ -43,6 +36,5 @@ class CreateQuesitionsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('prop_quesition');
-        Schema::dropIfExists('prop_examination_papers');
     }
 }
