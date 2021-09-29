@@ -50,9 +50,9 @@
 <script type="text/javascript" src="{{ URL::asset('js/jquery.cycle.all.js') }}"></script>
 <script>
   $(function() {
-    var bannerList = ['https://banner-cfnetwork.cdn.hinet.net/image/7630/01229154e20e954a3dc2a4a299b69a0e.gif',  
+    var bannerList = ['https://cdn.holmesmind.com/image/defbg.jpg',  
                       'https://cdn.holmesmind.com/image/defbg.jpg',
-                      'https://banner-cfnetwork.cdn.hinet.net/image/7630/bd7ae96e83f8bfba6c0bdb1647d29b28.gif'],
+                      'https://cdn.holmesmind.com/image/defbg.jpg'],
       $imgGroup = $('#img-group'),
       imgHtml = $('#img-group').html();
 

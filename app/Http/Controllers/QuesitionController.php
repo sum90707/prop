@@ -111,10 +111,10 @@ class QuesitionController extends Controller
     //this function is a test function for php cogitation
     public function testController(Request $request)
     {   
-        $q = Quesition::where('id','=', (1+1));
-        if (1+1 instanceof Expression) {
-            dd('innnn');
-        }
+        // $q = Quesition::where('id','=', (1+1));
+        // if (1+1 instanceof Expression) {
+        //     dd('innnn');
+        // }
         dd('fin');
     }
 }
